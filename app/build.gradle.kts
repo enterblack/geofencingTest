@@ -27,7 +27,14 @@ android {
 
         manifestPlaceholders["MAP_API_KEY"] = properties["MAPS_API_KEY"] as String
     }
-
+    signingConfigs {
+//        create("debug"){
+//            keyAlias = "androiddebugkey"
+//            keyPassword = "android"
+//            storeFile = file("${System.getProperty("user.home")}/.android/debug.keystore")
+//            storePassword = "android"
+//        }
+    }
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -36,7 +43,11 @@ android {
                 "proguard-rules.pro"
             )
         }
+        getByName("debug"){
+            signingConfig = signingConfigs.getByName("debug")
+        }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
