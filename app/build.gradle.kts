@@ -35,6 +35,7 @@ android {
 //            storePassword = "android"
 //        }
     }
+    configurations.implementation{ exclude(group = "com.intellij" , module = "annotations")}
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -71,6 +72,8 @@ android {
 
 dependencies {
 
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.compiler)
     implementation(libs.maps.compose)
     implementation(libs.play.services.location)
     implementation(libs.androidx.core.ktx)
